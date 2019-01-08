@@ -9,11 +9,12 @@
 <body>
 	<form action="UserServlet" method="post">
 	<p>用户名:</p>
-	<input  type="text" name="name">
+	<input  type="text" name="name"><p>${sb}</p>
 	<p>密码:</p>
 	<input  type="text" name="password" maxlength="20" >
 	<p></p>
 	<input type="submit"  value="注册">
 	</form>
+	<p>${cg}</p>
 </body>
 </html>

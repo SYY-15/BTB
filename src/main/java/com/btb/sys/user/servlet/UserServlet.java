@@ -1,6 +1,7 @@
 package com.btb.sys.user.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -41,6 +42,7 @@ public class UserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
     	response.setContentType("text/html;charset=UTF-8"); 
+    	PrintWriter printWriter = response.getWriter();
         String name = request.getParameter("name");
         String password = request.getParameter("password");
         System.out.println(name + ";" + password);
@@ -55,9 +57,17 @@ public class UserServlet extends HttpServlet {
 			Class.forName(driver);
 			connection = DriverManager.getConnection(url, user, daoPassword);
 			statement = connection.createStatement();
-			String sqlstr="insert into sys_user(password,name) value('"+password+"','"+name+"')";
-			System.out.println(sqlstr);
-			int n = statement.executeUpdate(sqlstr);
+			String sqlstr = "select * from sys_user where name = '"+name+"'";
+			resultSet = statement.executeQuery(sqlstr);
+			if(resultSet.next()) {
+				request.setAttribute("sb", "当前用户名已存在");
+			}else {
+				sqlstr="insert into sys_user(password,name) value('"+password+"','"+name+"')";
+				System.out.println(sqlstr);
+				int n = statement.executeUpdate(sqlstr);
+				request.setAttribute("cg", "注册成功");
+			}
+			
 		}catch(ClassNotFoundException e1)
         {
             System.out.print("数据库驱动不存在！");
@@ -84,6 +94,7 @@ public class UserServlet extends HttpServlet {
                 System.out.print(e.toString());
             }
         }
+		request.getRequestDispatcher("Register.jsp").forward(request, response);
 	}
 
 }
