@@ -1,18 +1,15 @@
 package com.btb.sys.user.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.btb.sys.user.dao.impl.UserDaoImpl;
+import com.btb.sys.user.model.User;
 
 /**
  * Servlet implementation class UserServlet
@@ -41,60 +38,26 @@ public class UserServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-    	response.setContentType("text/html;charset=UTF-8"); 
-    	PrintWriter printWriter = response.getWriter();
-        String name = request.getParameter("name");
-        String password = request.getParameter("password");
-        System.out.println(name + ";" + password);
-        String driver="com.mysql.cj.jdbc.Driver";
-        String url="jdbc:mysql://68.168.136.2/btb?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8";
-        String user="myuser";
-        String daoPassword="MyUser#2018";
-        Connection connection = null;
-		Statement statement = null;
-        ResultSet resultSet = null;
-		try {
-			Class.forName(driver);
-			connection = DriverManager.getConnection(url, user, daoPassword);
-			statement = connection.createStatement();
-			String sqlstr = "select * from sys_user where name = '"+name+"'";
-			resultSet = statement.executeQuery(sqlstr);
-			if(resultSet.next()) {
+    	response.setContentType("text/html;charset=UTF-8");
+    	User user = new User();
+        user.setName(request.getParameter("name"));
+        user.setPassword(request.getParameter("password"));
+        System.out.println(user);
+        UserDaoImpl userDaoImpl = new UserDaoImpl();
+        try {
+			if(userDaoImpl.comparisonUser(user.getName()) != null) {
 				request.setAttribute("sb", "当前用户名已存在");
 			}else {
-				sqlstr="insert into sys_user(password,name) value('"+password+"','"+name+"')";
-				System.out.println(sqlstr);
-				int n = statement.executeUpdate(sqlstr);
+				userDaoImpl.insert(user);
 				request.setAttribute("cg", "注册成功");
 			}
-			
-		}catch(ClassNotFoundException e1)
-        {
-            System.out.print("数据库驱动不存在！");
-            System.out.print(e1.toString());
-        }
-        catch(SQLException e2)
-        {
-            System.out.print("数据库存在异常！");
-            System.out.print(e2.toString());
-        }
-        finally
-        {
-            try
-            {
-                if(resultSet!=null)
-                    resultSet.close();
-                if(statement!=null)
-                    statement.close();
-                if(connection!=null)
-                    connection.close();    
-            }
-            catch(SQLException e)
-            {
-                System.out.print(e.toString());
-            }
-        }
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			request.setAttribute("cg", "数据库异常");
+		}
 		request.getRequestDispatcher("Register.jsp").forward(request, response);
+        
 	}
 
 }
