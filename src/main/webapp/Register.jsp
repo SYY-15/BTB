@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>注册</title>
 </head>
 <body>
 	<form action="UserServlet" method="post">
 	<p>用户名:</p>
-	<input  type="text" name="name"><p>${sb}</p>
+	<input  type="text" name="name"><p style="color:red">${sb}</p>
 	<p>密码:</p>
-	<input  type="text" name="password" maxlength="20" >
+	<input  type="password" name="password" maxlength="20" >
 	<p></p>
 	<input type="submit"  value="注册">
 	</form>
