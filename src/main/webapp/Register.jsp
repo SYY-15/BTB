@@ -7,13 +7,11 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#zc").click(function() {
-			var data = $("form").serialize();
+		$("#register").click(function() {
 			$.ajax({
-				type : 'post',
-				url : "UserServlet",
-				cache : false,
-				data : data,
+				type : $("form").attr("method"),
+				url : $("form").attr("action"),
+				data : $("form").serialize(),
 				dataType : 'json',
 				success : function(data) {
 					alert(data.mgs);
@@ -29,14 +27,14 @@
 <title>注册</title>
 </head>
 <body>
-	<form  method="post">
+	<form action="UserServlet" method="post">
 		<p>用户名:</p>
 		<input type="text" name="name">
 		<p id="p1" style="color: red">${sb}</p>
 		<p>密码:</p>
 		<input type="password" name="password" maxlength="20">
 		<p></p>
-		<input id="zc" type="button" value="注册">
+		<input id="register" type="button" value="注册">
 	</form>
 	<p>${cg}</p>
 </body>
