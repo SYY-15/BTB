@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BTB登录</title>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#dl").click(function() {
+			var data = $("form").serialize();
+			$.ajax({
+				type : 'post',
+				url : "LoginServlet",
+				cache : false,
+				data : data,
+				dataType : 'json',
+				success : function(data) {
+					alert(data.mgs);
+				},
+				error : function() {
+					alert("请求失败")
+				}
+			})
+		});
+
+	});
+</script>
+</head>
+<body>
+	<form  method="post">
+		<p>用户名:</p>
+		<input type="text" name="name">
+		<p>密码:</p>
+		<input type="password" name="password" maxlength="20">
+		<p></p>
+		<input id="dl" type="button" value="登录">
+	</form>
+</body>
+</html>
