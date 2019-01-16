@@ -1,6 +1,6 @@
-package com.btb.sys.user.dao;
+package com.btb.user.dao;
 
-import com.btb.sys.user.model.User;
+import com.btb.user.model.User;
 import com.btb.util.dao.Dao;
 
 public interface UserDao extends Dao<User> {

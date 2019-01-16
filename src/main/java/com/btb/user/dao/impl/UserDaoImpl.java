@@ -1,4 +1,4 @@
-package com.btb.sys.user.dao.impl;
+package com.btb.user.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.btb.sys.user.dao.UserDao;
-import com.btb.sys.user.model.User;
+import com.btb.user.dao.UserDao;
+import com.btb.user.model.User;
 import com.btb.util.dao.BaseDao;
 
 public class UserDaoImpl extends BaseDao implements UserDao {

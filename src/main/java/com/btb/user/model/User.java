@@ -1,4 +1,4 @@
-package com.btb.sys.user.model;
+package com.btb.user.model;
 
 /**
  * 用户model类

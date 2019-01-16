@@ -1,5 +1,5 @@
 /**
- * 
+ * 注册页面脚本
  */
 $(document).ready(function() {
 	var ctxPath = window.location.origin+"/"+window.location.pathname.split("/")[1];
@@ -14,9 +14,6 @@ $(document).ready(function() {
 				if(date.status){
 					window.location.href="login.html"
 				}
-			},
-			error : function() {
-				alert("请求失败")
 			}
 		})
 	});

@@ -1,4 +1,4 @@
-package com.btb.sys.user.servlet;
+package com.btb.user.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.btb.sys.user.dao.UserDao;
-import com.btb.sys.user.dao.impl.UserDaoImpl;
-import com.btb.sys.user.model.User;
+import com.btb.user.dao.UserDao;
+import com.btb.user.dao.impl.UserDaoImpl;
+import com.btb.user.model.User;
 import com.btb.util.msg.Message;
 
 /**
