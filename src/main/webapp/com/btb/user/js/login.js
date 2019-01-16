@@ -13,7 +13,7 @@ $(document).ready(function() {
 				success : function(data) {
 					alert(data.msg);
 					if (data.status == 1) {
-						window.location.href = "register.html"
+						window.location.href = "../../index/html/index.html"
 					} 
 				},
 				error : function() {
