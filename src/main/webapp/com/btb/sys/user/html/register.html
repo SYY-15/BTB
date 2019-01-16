@@ -4,28 +4,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#register").click(function() {
-			$.ajax({
-				type : $("form").attr("method"),
-				url : $("form").attr("action"),
-				data : $("form").serialize(),
-				dataType : 'json',
-				success : function(data) {
-					alert(data.mgs);
-				},
-				error : function() {
-					alert("请求失败")
-				}
-			})
-		});
-
-	});
-</script>
+<script src="../js/register.js"></script>
 </head>
 <body>
-	<form action="RegisterServlet" method="post">
+	<form action="/RegisterServlet" method="post">
 		<p>用户名:</p>
 		<input type="text" name="name">
 		<p>密码:</p>
