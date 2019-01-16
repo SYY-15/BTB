@@ -4,30 +4,7 @@
 <meta charset="UTF-8">
 <title>BTB登录</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#dl").click(function() {
-			var data = $("form").serialize();
-			$.ajax({
-				type : 'post',
-				url : "/BTB/LoginServlet",
-				cache : false,
-				data : data,
-				dataType : 'json',
-				success : function(data) {
-					alert(data.msg);
-					if (data.status == 1) {
-						window.location.href = "register.html"
-					} 
-				},
-				error : function() {
-					alert("请求失败")
-				}
-			})
-		});
-
-	});
-</script>
+<script src="../js/login.js"></script>
 </head>
 <body>
 	<form method="post">
