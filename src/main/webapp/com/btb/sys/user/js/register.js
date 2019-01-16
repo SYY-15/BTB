@@ -10,7 +10,10 @@ $(document).ready(function() {
 			data : $("form").serialize(),
 			dataType : 'json',
 			success : function(data) {
-				alert(data.mgs);
+				alert(data.msg);
+				if(date.status){
+					window.location.href="login.html"
+				}
 			},
 			error : function() {
 				alert("请求失败")

@@ -5,31 +5,21 @@ import java.util.List;
 public interface Dao<T> {
 	/**
 	 * 查询所有
-	 * @return 查询列表
-	 * @throws Exception
+	 * @return 结果列表
 	 */
-    public List<T> findAll() throws Exception; 
+    public List<T> findList(); 
     
     /**
-     * 插入对象
-     * @param t 新插入的对象
+     * 保存
+     * @param t 需要保存的对象
      * @return 受影响行数
-     * @throws Exception
      */
-    public int insert(T t) throws Exception;
-    /**
-     * 更新对象
-     * @param t 要更新的对象
-     * @return 受影响行数
-     * @throws Exception
-     */
-    public int update(T t) throws Exception;
+    public int save(T t);
     
     /**
-     * 删除对象
+     * 删除
      * @param t 要删除的对象
      * @return 受影响行数
-     * @throws Exception
      */
-    public int delete(T t) throws Exception;
+    public int delete(T t);
 }
