@@ -10,12 +10,15 @@
 			var data = $("form").serialize();
 			$.ajax({
 				type : 'post',
-				url : "LoginServlet",
+				url : "/BTB/LoginServlet",
 				cache : false,
 				data : data,
 				dataType : 'json',
 				success : function(data) {
-					alert(data.mgs);
+					alert(data.msg);
+					if (data.status == 1) {
+						window.location.href = "register.html"
+					} 
 				},
 				error : function() {
 					alert("请求失败")
@@ -27,7 +30,7 @@
 </script>
 </head>
 <body>
-	<form  method="post">
+	<form method="post">
 		<p>用户名:</p>
 		<input type="text" name="name">
 		<p>密码:</p>

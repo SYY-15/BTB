@@ -27,7 +27,7 @@ public class Message {
 	 * 添加状态
 	 * @param status 状态
 	 */
-	public void setStatus(boolean status) {
+	public void setStatus(int status) {
 		message.put("status", status);
 	}
 	

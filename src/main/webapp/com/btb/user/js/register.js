@@ -11,7 +11,7 @@ $(document).ready(function() {
 			dataType : 'json',
 			success : function(data) {
 				alert(data.msg);
-				if(date.status){
+				if(data.status){
 					window.location.href="login.html"
 				}
 			}

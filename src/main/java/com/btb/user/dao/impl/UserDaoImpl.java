@@ -42,6 +42,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 			resultSet = statement.executeQuery();
 			if (resultSet.next()) {
 				user = new User();
+				user.setId(resultSet.getInt("id"));
 			    user.setPassword(resultSet.getString("password"));
 			    user.setName(resultSet.getString("name"));
 			}

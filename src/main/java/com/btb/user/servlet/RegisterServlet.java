@@ -55,11 +55,12 @@ public class RegisterServlet extends HttpServlet {
 
 		System.out.println(user);
 		if (userDaoImpl.comparisonUser(user.getName()) != null) {
-			message.setStatus(false);
+			
+			message.setStatus(0);
 			message.setMsg("当前用户名已存在");
 		} else {
 			userDaoImpl.save(user);
-			message.setStatus(true);
+			message.setStatus(1);
 			message.setMsg("注册成功");
 		}
 		printWriter.println(message);
