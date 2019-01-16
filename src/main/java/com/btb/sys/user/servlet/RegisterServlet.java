@@ -18,14 +18,14 @@ import com.btb.sys.user.model.User;
 /**
  * Servlet implementation class UserServlet
  */
-@WebServlet("/UserServlet")
-public class UserServlet extends HttpServlet {
+@WebServlet("/RegisterServlet")
+public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserServlet() {
+    public RegisterServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
