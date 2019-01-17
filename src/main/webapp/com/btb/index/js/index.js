@@ -1,21 +1,20 @@
 /**
  * 
  */
-$(document).ready(function() {
-	
-$("#div1").load("/ProductSelvlet",function(response,status){
-	if(status=='success'){
-		alert("请求成功");
-		alert(response.producturl);
-		"<td><img src="+response.productrul+"/></td>"
-		
-	}else{
-		
-		alert("请求失败");
-		
-	}
+$(document).ready(
+		function() {
+			var ctxPath = window.location.origin + "/"
+					+ window.location.pathname.split("/")[1];
+			$.getJSON(ctxPath + "/ProductServlet", function(data) {
+				$.each(data.data, function(i, data) {
+					console.log(data.prodoctPicture);
+					$("#table1").append("<tr><td id=\"td1\">");
+					$("#td1").append("<img src=\""+ctxPath+data.prodoctPicture+"\"/>");
+					$("#table1").append("</td></tr>");
+					
+					
+					
+				})
 
-	
-	
-})
-});
+			})
+		});
