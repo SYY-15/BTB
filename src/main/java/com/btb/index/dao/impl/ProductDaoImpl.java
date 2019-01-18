@@ -24,7 +24,7 @@ public class ProductDaoImpl extends BaseDao implements ProductDao {
 			String sql = "SELECT * FROM product_information";
 			statement = connection.prepareStatement(sql);
 			resultSet = statement.executeQuery();
-			if (resultSet.next()) {
+			while (resultSet.next()) {
 				Product product = new Product();
 				product.setId(resultSet.getInt("id"));
 				product.setProdoctName(resultSet.getString("product_name"));

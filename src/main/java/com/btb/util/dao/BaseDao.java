@@ -11,7 +11,7 @@ public class BaseDao {
 	private static String driver = "com.mysql.cj.jdbc.Driver";
 	private static String url = "jdbc:mysql://68.168.136.2/btb?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8";
 	private static String user = "myuser";
-	private static String password = "MyUser#2018";
+	private static String password = "MyUser#2019";
 	static {
 		try {
 			Class.forName(driver);
