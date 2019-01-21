@@ -9,6 +9,7 @@ import java.util.List;
 import com.btb.user.dao.UserDao;
 import com.btb.user.model.User;
 import com.btb.util.dao.BaseDao;
+import com.btb.util.page.PageList;
 
 public class UserDaoImpl extends BaseDao implements UserDao {
 
@@ -61,6 +62,12 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
 	@Override
 	public List<User> findList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PageList<User> pageList(int currentPage) {
 		// TODO Auto-generated method stub
 		return null;
 	}

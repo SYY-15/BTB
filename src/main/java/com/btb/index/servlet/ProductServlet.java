@@ -2,7 +2,6 @@ package com.btb.index.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.btb.index.dao.ProductDao;
 import com.btb.index.dao.impl.ProductDaoImpl;
 import com.btb.index.model.Product;
-import com.btb.util.msg.Message;
+import com.btb.util.page.PageList;
 
 /**
  * Servlet implementation class ProductServlet
@@ -37,11 +36,15 @@ public class ProductServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter printWriter = response.getWriter();
-		Message message = new Message();
+		System.out.println(request.getParameter("page"));
+		int currentPage = Integer.parseInt(request.getParameter("page") == null ? "1" : request.getParameter("page"));
+		//Message message = new Message();
 		ProductDao dao = new ProductDaoImpl();
-		List<Product> list = dao.findList();
-		message.setData(list);
-		printWriter.println(message);
+		//List<Product> list = dao.findList();
+		PageList<Product> pageList = dao.pageList(currentPage);
+		//message.setData(list);
+		//message.setData(list);
+		printWriter.println(pageList);
 	}
 
 	/**

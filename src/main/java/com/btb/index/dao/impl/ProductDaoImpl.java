@@ -10,6 +10,7 @@ import java.util.List;
 import com.btb.index.dao.ProductDao;
 import com.btb.index.model.Product;
 import com.btb.util.dao.BaseDao;
+import com.btb.util.page.PageList;
 
 public class ProductDaoImpl extends BaseDao implements ProductDao {
 
@@ -43,6 +44,19 @@ public class ProductDaoImpl extends BaseDao implements ProductDao {
 			}
 		}
         return list;
+	}
+	
+	@Override
+	public PageList<Product> pageList(int currentPage) {
+		int displayQuantity = 2;
+		PageList<Product> pageList = new PageList<>();
+		List<Product> list = findList();
+		int size = list.size();
+		pageList.setCurrentPage(currentPage);
+		//如果整页显示不完总页数加一页
+		pageList.setTotalPage(size % displayQuantity == 0 ? size / displayQuantity : size / displayQuantity + 1);
+		pageList.setList(list.subList((currentPage - 1) * displayQuantity , currentPage * displayQuantity > size ? size : currentPage * displayQuantity));
+		return pageList;
 	}
 
 	@Override
