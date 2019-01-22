@@ -48,7 +48,7 @@ public class ProductDaoImpl extends BaseDao implements ProductDao {
 	
 	@Override
 	public PageList<Product> pageList(int currentPage) {
-		int displayQuantity = 2;
+		int displayQuantity = 12;
 		PageList<Product> pageList = new PageList<>();
 		List<Product> list = findList();
 		int size = list.size();
