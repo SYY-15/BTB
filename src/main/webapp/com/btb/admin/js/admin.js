@@ -19,25 +19,26 @@ function requestData(data) {
 		console.log(tableData);
 		showTableData();
 		showPageData();
-		$("#table1").show();
+		$("body").show();
 	});
 
 }
+
 function showTableData() {
-	
 	$("#table1 tr").not("#table1 tr:first").remove();
 	$("#divPage").empty();
-	var id = 1;
+	$("#divbutton").append("<button onclick=\"addProdoct()\">添加</button><button>删除</button>");
 	$.each(tableData.list, function(i, data) {
 		var tr = $("<tr></tr>");
+		$("#table1").append(tr);
 		$(tr).append("<td><input type=\"checkbox\" value=\""+data.id+"\"></td>");
-		$(tr).append("<td>"+ id +"</td>");
+		$(tr).append("<td>"+ data.id +"</td>");
 		$(tr).append("<td>"+ data.prodoctName + "</td>");
 		$(tr).append("<td>"+ data.prodoctPrice + "</td>");
 		$(tr).append("<td>"+ data.prodoctUrl + "</td>");
 		$(tr).append("<td>"+ data.prodoctPicture + "</td>");
 		$(tr).append("<td><button  value=\""+data.id+"\">修改</button><button  value=\""+data.id+"\">删除</button></td>");
-		$("#table1").append(tr);
+		
 	});
 }
 function showPageData() {
@@ -92,3 +93,19 @@ function showPageData() {
 		}));
 	}
 }
+
+function addProdoct(){
+
+	$("#divbutton").mousedown(function(){
+		$("#divbutton").mousemove(function(event){
+			console.log(event.pageX + ", " + event.pageY);
+			
+			}); 
+	  });
+	 $("#divbutton").mouseup(function(){
+		 $("#divbutton").unbind('mousemove');
+		    
+		  });
+	
+}
+
