@@ -13,6 +13,7 @@ import com.btb.index.dao.ProductDao;
 import com.btb.index.dao.impl.ProductDaoImpl;
 import com.btb.index.model.Product;
 import com.btb.util.page.PageList;
+import com.btb.util.string.StringUtils;
 
 /**
  * Servlet implementation class ProductServlet
@@ -36,8 +37,16 @@ public class ProductServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter printWriter = response.getWriter();
-		System.out.println(request.getParameter("page"));
-		int currentPage = Integer.parseInt(request.getParameter("page") == null ? "1" : request.getParameter("page"));
+		String currentPageStr = request.getParameter("page");
+		int currentPage = 1;
+		if(!StringUtils.isEmpty(currentPageStr)) {
+			try {
+				currentPage = Integer.parseInt(request.getParameter("page"));
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		//Message message = new Message();
 		ProductDao dao = new ProductDaoImpl();
 		//List<Product> list = dao.findList();
